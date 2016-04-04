@@ -42,6 +42,7 @@
         </li>
         @endforeach
         @if ($user != '')
+          <h3> Add a Post: </h3>
           <form method="POST" action="/posts" >
             <fieldset class="form-group">
               <label for="exampleInputEmail1">Title</label>
@@ -51,6 +52,7 @@
               <label for="exampleInputPassword1">Body</label>
               <input type="text" name="body" class="form-control" id="exampleInputPassword1" placeholder="Once upon a time...">
             </fieldset>
+            {{ csrf_field() }}
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
         @endif

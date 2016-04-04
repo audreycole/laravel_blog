@@ -33,6 +33,7 @@ class UserController extends Controller
 				// Store the user in the session...
     			//session(['user' => $user->name]);
                 Session::put('user', $user->name);
+                Session::put('user_id', $user->id);
 
     			return Redirect::to('home');
 			}

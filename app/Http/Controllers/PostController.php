@@ -6,7 +6,7 @@ use DB;
 
 use Session;
 
-//use App\Post;
+use App\Post;
 
 use Illuminate\Http\Request;
 
@@ -14,6 +14,7 @@ use App\Http\Requests;
 
 class PostController extends Controller
 {
+	// Home page for blog (use Query Builder)
     public function index()
 	{
 		//fetch 5 posts from database which are active and latest
@@ -31,6 +32,22 @@ class PostController extends Controller
 	    else {
 	    	return view('home')->withPosts($posts)->withTitle($title)->withUser('');
 	    }
+	}
+
+	// Add a blog post (use Eloquent ORM)
+	public function addPost(Request $request) {
+
+		$post = new Post;
+
+		$post->user_id = Session::get('user_id');
+
+		$post->title = $request->title;
+
+		$post->body = $request->body;
+
+		$post->save();
+
+		return back(); // redirect back()
 	}
 	
 }

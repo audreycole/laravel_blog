@@ -34,4 +34,5 @@ Route::post('/register/auth', 'UserController@create');
 // Logout
 Route::get('/logout', 'UserController@logout');
 
-
+// Add a post 
+Route::post('/posts', 'PostController@addPost');
