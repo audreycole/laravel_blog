@@ -39,6 +39,7 @@
         <label for="exampleInputPassword1">Password</label>
         <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
       </fieldset>
+      {{ csrf_field() }}
       <button type="submit" class="btn btn-primary">Submit</button>
       </form>
 

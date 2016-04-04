@@ -2,6 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use Session;
+
+use Hash;
+
+use DB;
+
+use DateTime;
+
+use Redirect;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -27,7 +37,7 @@ class UserController extends Controller
     			return Redirect::to('home');
 			}
 		}
-		return view('login');
+		return Redirect::to('/login');
     }
 
 
@@ -37,14 +47,21 @@ class UserController extends Controller
 		$user = DB::table('users')->where('email', $request->email)->first();
 
 		if($user) {
-			return view('register');
+			return Redirect::to('/register');
 		}
 
     	// Insert the new user into the table
     	DB::table('users')->insert(
-    		['name' => $request->name, 'email' => $request->email, 'password' => Hash::make($request->password)]);
+    		['name' => $request->name, 'email' => $request->email, 'password' => Hash::make($request->password), 'created_at' => new DateTime, 'updated_at' => new DateTime]);
 
-    	return view('login');
+    	return Redirect::to('/login');
+    }
+
+    // Logout a user
+    public function logout() {
+        Session::flush();
+        
+        return Redirect::to('home');
     }
 }
  

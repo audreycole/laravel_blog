@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use DB;
 
+use Session;
+
 //use App\Post;
 
 use Illuminate\Http\Request;
@@ -16,7 +18,7 @@ class PostController extends Controller
 	{
 		//fetch 5 posts from database which are active and latest
 		//$posts = Posts::where('active',1)->orderBy('created_at','desc')->paginate(5);
-		$posts = DB::table('posts')->where('active', 1)->orderBy('created_at', 'desc')->take(5)->get();
+		$posts = DB::table('posts')->orderBy('created_at')->take(5)->get();
 
 	    //page heading
 	    $title = 'Latest Posts';
@@ -30,18 +32,5 @@ class PostController extends Controller
 	    	return view('home')->withPosts($posts)->withTitle($title)->withUser('');
 	    }
 	}
-
-	/*public function login() {
-
-	}
-
-	public function register() {
-
-	}*/
-
-	public function logout() {
-		Session::flush();
-		
-		return Redirect::to('home');
-	}
+	
 }

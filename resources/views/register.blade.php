@@ -29,10 +29,10 @@
     
       <h1>Register</h1>
       
-      <form method="POST" action="/login/auth">
+      <form method="POST" action="/register/auth">
       <fieldset class="form-group">
         <label for="exampleInputName">Username</label>
-        <input type="email" name="name" class="form-control" id="exampleInputName" placeholder="Enter username">
+        <input type="text" name="name" class="form-control" id="exampleInputName" placeholder="Enter username">
       </fieldset>
       <fieldset class="form-group">
         <label for="exampleInputEmail1">Email address</label>
@@ -43,6 +43,7 @@
         <label for="exampleInputPassword1">Password</label>
         <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
       </fieldset>
+      {{ csrf_field() }}
       <button type="submit" class="btn btn-primary">Submit</button>
       </form>
         

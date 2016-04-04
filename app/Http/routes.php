@@ -30,3 +30,8 @@ Route::get('/register', function() {
 	return view('register');
 });
 Route::post('/register/auth', 'UserController@create');
+
+// Logout
+Route::get('/logout', 'UserController@logout');
+
+
