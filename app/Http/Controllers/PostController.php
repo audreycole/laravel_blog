@@ -49,5 +49,19 @@ class PostController extends Controller
 
 		return back(); // redirect back()
 	}
+
+	// Show a blog post (use Eloquent ORM)
+	public function show($id) {
+
+		$post = Post::find($id);
+
+		if(Session::has('user')) {
+			return view('posts.show')->withPost($post)->withUser(Session::get('user'));
+		}
+		else {
+			return view('posts.show')->withPost($post)->withUser('');
+		}
+	}
+
 	
 }

@@ -8,7 +8,7 @@
     <title>Bootstrap 101 Template</title>
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -23,39 +23,22 @@
     <nav class="navbar navbar-inverse">
       <ul class="nav nav-pills">
       @if ($user == '')
-        <li role="presentation" class="active"><a href="/login">Login</a></li>
-        <li role="presentation"><a href="/register">Register</a></li>
+        <li role="presentation" class="active"><a href="/home">Home</a></li>
+        <li role="presentation"><a href="/login">Login</a></li>
       @else 
-        <li role="presentation" class="active"><a href="/logout">Logout</a></li>
-        <li role="presentation"><a href="/register">Register</a></li>
+        <li role="presentation" class="active"><a href="/home">Home</a></li>
+        <li role="presentation"><a href="/logout">Logout</a></li>
       @endif
       </ul>
     </nav>
-    
-      <h1>{{ $title }}</h1>
         @if ($user != '')
           <p>Welcome to the blog, {{ $user }}</p> 
         @endif
-        @foreach ($posts as $post)
-        <li>
-          <a href='/posts/{{ $post->id }}'> {{ $post->title }} </a>
-        </li>
-        @endforeach
-        @if ($user != '')
-          <h3> Add a Post: </h3>
-          <form method="POST" action="/posts" >
-            <fieldset class="form-group">
-              <label for="exampleInputEmail1">Title</label>
-              <input type="text" name="title" class="form-control" id="exampleInputEmail1" placeholder="Enter title">
-            </fieldset>
-            <fieldset class="form-group">
-              <label for="exampleInputPassword1">Body</label>
-              <textarea name="body" class="form-control" id="exampleInputPassword1" placeholder="Once upon a time..." rows="10"></textarea>
-            </fieldset>
-            {{ csrf_field() }}
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-        @endif
+
+        <hr>
+        <h1>{{ $post->title }}</h1>
+        <p> {{ $post->body }} </p>
+        
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

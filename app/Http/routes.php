@@ -36,3 +36,6 @@ Route::get('/logout', 'UserController@logout');
 
 // Add a post 
 Route::post('/posts', 'PostController@addPost');
+
+// View a post
+Route::get('/posts/{post}', 'PostController@show');
